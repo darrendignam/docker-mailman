@@ -15,21 +15,21 @@ if [ "$BUILD_ROLLING" = "yes" ]; then
     # Build the mailman-core image.
     $DOCKER build -f core/Dockerfile.dev \
             --label version.git_commit="$COMMIT_ID" \
-            -t maxking/mailman-core:rolling core/
+            -t darrenopf/mailman-core:rolling core/
 
     # Build the mailman-web image.
     $DOCKER build -f web/Dockerfile.dev \
             --label version.git_commit="$COMMIT_ID" \
-            -t maxking/mailman-web:rolling web/
+            -t darrenopf/mailman-web:rolling web/
 
     # build the postorius image.
     $DOCKER build -f postorius/Dockerfile.dev\
 			--label version.git_commit="$COMMIT_ID"\
-			-t maxking/postorius:rolling postorius/
+			-t darrenopf/postorius:rolling postorius/
 else
     echo "Building stable releases..."
     # Build the stable releases.
-    $DOCKER build -t maxking/mailman-core:rolling core/
-    $DOCKER build -t maxking/mailman-web:rolling web/
-    $DOCKER build -t maxking/postorius:rolling postorius/
+    $DOCKER build -t darrenopf/mailman-core:rolling core/
+    $DOCKER build -t darrenopf/mailman-web:rolling web/
+    $DOCKER build -t darrenopf/postorius:rolling postorius/
 fi
