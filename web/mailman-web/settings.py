@@ -49,20 +49,23 @@ SITE_ID = 1
 # See https://docs.djangoproject.com/en/3.1/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = [
     "localhost",  # Archiving API from Mailman, keep it.
-    # "lists.your-domain.org",
+    "lists.your-domain.org",
+    "lists.openpreservation.org"
+    "lists.opf-labs.org"
     # Add here all production URLs you may have.
-    "mailman-web",
-    gethostbyname("mailman-web"),
+    "production-mailman-production-mailman3-web.production",
+    gethostbyname("production-mailman-production-mailman3-web.production"),
+    # gethostbyname("mailman-web"), # This was causing an 
     os.environ.get('SERVE_FROM_DOMAIN'),
     os.environ.get('DJANGO_ALLOWED_HOSTS'),
 ]
 
 # Mailman API credentials
-MAILMAN_REST_API_URL = os.environ.get('MAILMAN_REST_URL', 'http://mailman-core:8001')
+MAILMAN_REST_API_URL = os.environ.get('MAILMAN_REST_URL', 'http://production-mailman-production-mailman3-core.production:8001')
 MAILMAN_REST_API_USER = os.environ.get('MAILMAN_REST_USER', 'restadmin')
 MAILMAN_REST_API_PASS = os.environ.get('MAILMAN_REST_PASSWORD', 'restpass')
 MAILMAN_ARCHIVER_KEY = os.environ.get('HYPERKITTY_API_KEY')
-MAILMAN_ARCHIVER_FROM = (os.environ.get('MAILMAN_HOST_IP', gethostbyname(os.environ.get('MAILMAN_HOSTNAME', 'mailman-core'))),)
+MAILMAN_ARCHIVER_FROM = (os.environ.get('MAILMAN_HOST_IP', gethostbyname(os.environ.get('MAILMAN_HOSTNAME', 'production-mailman-production-mailman3-core.production'))),)
 
 # Application definition
 
@@ -74,7 +77,7 @@ DEFAULT_APPS = [
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
+    'django.contrib.admindocs',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -389,7 +392,7 @@ Q_CLUSTER = {
     'orm': 'default',
 }
 
-POSTORIUS_TEMPLATE_BASE_URL =  os.environ.get('POSTORIUS_TEMPLATE_BASE_URL', 'http://mailman-web:8000')
+POSTORIUS_TEMPLATE_BASE_URL =  os.environ.get('POSTORIUS_TEMPLATE_BASE_URL', 'http://production-mailman-production-mailman3-web.production:8000')
 
 DISKCACHE_PATH = os.environ.get('DISKCACHE_PATH', '/opt/mailman-web-data/diskcache')
 DISKCACHE_SIZE = os.environ.get('DISKCACHE_SIZE', 2 ** 30) # 1 gigabyte
