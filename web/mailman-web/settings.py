@@ -54,7 +54,7 @@ ALLOWED_HOSTS = [
     "lists.opf-labs.org"
     # Add here all production URLs you may have.
     "production-mailman-production-mailman3-web.production",
-    gethostbyname("production-mailman-production-mailman3-web.production"),
+    # gethostbyname("production-mailman-production-mailman3-web.production"),
     # gethostbyname("mailman-web"), # This was causing an 
     os.environ.get('SERVE_FROM_DOMAIN'),
     os.environ.get('DJANGO_ALLOWED_HOSTS'),
